@@ -1,14 +1,12 @@
 # Overview
 
-This is a minimal project which uses some device header files provided by ST to give us access to convenient aliases for peripheral registers.
+This is a minimal project to demonstrate how to support multiple microcontroller cores in a single project, with minimal code changes. The project supports both Cortex-M0 'STM32F031K6' and Cortex-M0+ 'STM32L031K6' chips.
 
 The example project initializes pin B1 as input with a built-in pull-up resistor; it listens for button presses on a button connected to ground. pin B3 is set to push-pull output, and it is connected to a built-in LED on ST's "Nucleo" board.
 
-[TODO: circuit image of the board with a button connected]
-
 # Uploading and Debugging
 
-A Makefile is provided, and I've tested the program with a 'Nucleo-32' board with the STM32F031K6 chip. To upload the resulting program, you can use your choice of uploader/debugger. I use GDB and Texane's "stlink" project:
+A Makefile is provided, and I've tested the program with 'Nucleo-32' boards for both chips. To upload the resulting program, you can use your choice of uploader/debugger. I use GDB and Texane's "stlink" project:
 
 https://github.com/texane/stlink
 
@@ -26,4 +24,4 @@ It's a fairly simple process to upload and debug a program:
 
 6. You're code is uploaded! Enter `continue` to start it running, and hit `ctrl+C` a few times (followed by 'y' for 'yes') to interrupt it once it's started.
 
-Once the code is uploaded, you can more or less treat the GDB debugging session like you would any other C/C++ program. You can set breakpoints, step through the code with `s`/`si`/`n`/`ni`/etc, inspect variables or memory addresses, and so on.
+Once the code is uploaded, you can more or less treat the GDB debugging session like you would any other C/C++ program in GDB. You can set breakpoints, step through the code with `s`/`si`/`n`/`ni`/etc, inspect variables or memory addresses, and so on.
