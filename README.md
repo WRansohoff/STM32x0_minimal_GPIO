@@ -10,18 +10,10 @@ A Makefile is provided, and I've tested the program with 'Nucleo-32' boards for 
 
 https://github.com/texane/stlink
 
-It's a fairly simple process to upload and debug a program:
+It's a fairly simple process to upload g a program:
 
-1. Plug your board in - for ST's Nucleo boards, you can just use an ordinary micro-USB cable.
+1. Build the project with `make`
 
-2. Enter 'st-util' in a terminal window after installing the utilities linked above. You should see some general information printed about your chip.
+2. Plug your board in - for ST's Nucleo boards, you can just use an ordinary micro-USB cable.
 
-3. Run `arm-none-eabi-gdb main.elf` (or whatever your file is called, if it's not 'main.elf')
-
-4. Point GDB to the port opened by 'st-util' - usually 4242: `target extended-remote :4242`
-
-5. Enter `load` to upload your program.
-
-6. You're code is uploaded! Enter `continue` to start it running, and hit `ctrl+C` a few times (followed by 'y' for 'yes') to interrupt it once it's started.
-
-Once the code is uploaded, you can more or less treat the GDB debugging session like you would any other C/C++ program in GDB. You can set breakpoints, step through the code with `s`/`si`/`n`/`ni`/etc, inspect variables or memory addresses, and so on.
+3. Run `st-flash write main.bin 0x08000000` to write the compiled binary file to the start of the chip's Flash memory.
