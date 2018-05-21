@@ -6,9 +6,11 @@ MCU ?= STM32L031K6
 
 ifeq ($(MCU), STM32F031K6)
 	MCU_FILES = STM32F031K6T6
+	ST_MCU_DEF = STM32F031x6
 	MCU_CLASS = F0
 else ifeq ($(MCU), STM32L031K6)
 	MCU_FILES = STM32L031K6T6
+	ST_MCU_DEF = STM32L031xx
 	MCU_CLASS = L0
 endif
 
@@ -48,7 +50,10 @@ CFLAGS += -g
 CFLAGS += -fmessage-length=0
 # (Set system to ignore semihosted junk)
 CFLAGS += --specs=nosys.specs
+# (Custom flags sent to the compiler)
+CFLAGS += -D$(ST_MCU_DEF)
 CFLAGS += -DVVC_$(MCU_CLASS)
+CFLAGS += -DVVC_$(MCU)
 
 # Linker directives.
 LSCRIPT = ./ld/$(LD_SCRIPT)

@@ -3,9 +3,9 @@
 
 #include <stdint.h>
 #ifdef VVC_F0
-  #include "stm32f031x6.h"
+  #include "stm32f0xx.h"
 #elif  VVC_L0
-  #include "stm32l031xx.h"
+  #include "stm32l0xx.h"
 #endif
 
 // Define GPIOB pin mappings for our LED and button.
