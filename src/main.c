@@ -10,6 +10,7 @@ int main(void) {
   #elif  VVC_L0
     RCC->IOPENR   |= RCC_IOPENR_IOPBEN;
   #endif
+
   // Initialize the GPIOB pins.
   // Reset all options, because the L0 lines reset to 0xFFFFFFFF.
   // B1 should be set to 'input' mode with pull-up.
@@ -22,8 +23,9 @@ int main(void) {
   GPIOB->MODER  |=  (0x1 << (LED_PIN*2));
   GPIOB->OTYPER &= ~(1 << LED_PIN);
   GPIOB->PUPDR  &= ~(0x3 << (LED_PIN*2));
+
   // Keep track of whether the button is pressed.
-  unsigned char button_down = 0;
+  uint8_t button_down = 0;
   while (1) {
     // Invert the IDR register since '0' means 'pressed'.
     uint32_t idr_val = ~GPIOB->IDR;
